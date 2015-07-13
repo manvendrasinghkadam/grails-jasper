@@ -16,7 +16,7 @@
 
 package org.codehaus.groovy.grails.plugins.jasper
 
-import org.codehaus.groovy.grails.web.taglib.GroovyPageAttributes;
+import org.grails.taglib.GroovyPageAttributes;
 
 /**
  * @author mfpereira 2007
