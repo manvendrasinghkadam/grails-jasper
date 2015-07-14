@@ -89,7 +89,8 @@ class JasperTagLib {
 				it = it.trim()
                 if (i > 0) result += delimiter
                 result += """ <a class="${buttonClass}" title="${it}" href="${g.createLink(controller: controller, action: action, params: [_format: it, _name: reportName, _file: jasperName])}"> """
-                result += """<img border="0" alt="${it}" src="${g.resource(plugin: "jasper", dir:"images/icons",file:"${it}.gif")}"${heightAttr} /></a> """
+                String iconName = "icons/${it.trim().toString()}.gif"
+                result += """<img border="0" alt="${it}" src="${assetPath(src: iconName)}"${heightAttr} /></a> """
             }
             result += delimiterAfter+' '+description
             out << result
@@ -113,9 +114,10 @@ class JasperTagLib {
         String result = delimiterBefore
         attrs['format'].toUpperCase().split(",").eachWithIndex {String it, int i ->
             if (i > 0) result += delimiter
+            String iconName = "icons/${it.trim().toString()}.gif"
             result += """
         <a href="#" class="${buttonClass}" title="${it.trim()}" onclick="return submit_${jasperNameNoPunct}(this)">
-        <img border="0"  alt="${it.trim()}" src="${g.resource(plugin: "jasper", dir:"images/icons",file:"${it.trim()}.gif")}"${heightAttr} /></a>
+        <img border="0"  alt="${it.trim()}" src="${assetPath(src: iconName)}" ${heightAttr} /></a>
       """
         }
         result += delimiterAfter

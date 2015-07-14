@@ -30,6 +30,10 @@ class JasperDemoController {
     redirect(action: 'demo')
   }
 
+  def index() {
+      redirect(controller: 'jasperDemo', action: 'demo')
+  }
+
   def demo() {
     // This "people" object in this data model is only for displaying the data in a table on the Demo page (demo.gsp) next to the
     // example that invokes the exampleWithData action, below.  It has nothing to do directly with the data that is

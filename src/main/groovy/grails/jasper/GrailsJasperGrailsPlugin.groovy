@@ -6,6 +6,7 @@ class GrailsJasperGrailsPlugin extends Plugin {
 
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "3.0.2 > *"
+
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
         "grails-app/views/error.gsp",
@@ -30,12 +31,6 @@ class GrailsJasperGrailsPlugin extends Plugin {
 
     // License: one of 'APACHE', 'GPL2', 'GPL3'
     def license = "Apache License 2.0"
-
-    // Details of company behind the plugin (if there is one)
-//    def organization = [ name: "My Company", url: "http://www.my-company.com/" ]
-
-    // Any additional developers beyond the author specified above.
-//    def developers = [ [ name: "Joe Bloggs", email: "joe@bloggs.net" ]]
 
     // Location of the plugin's issue tracker.
     def issueManagement = [system: "JIRA", url: "http://jira.grails.org/browse/GPJASPER"]
