@@ -16,6 +16,7 @@ plugin.xml
 /docs/
 .DS_Store
 
+# Gradle
 .gradle
 build
 
