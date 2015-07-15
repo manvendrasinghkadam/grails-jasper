@@ -1,6 +1,8 @@
 package grails.jasper
 
-import grails.plugins.*
+import grails.plugins.Plugin
+import net.sf.jasperreports.j2ee.servlets.ImageServlet
+import org.springframework.boot.context.embedded.ServletRegistrationBean
 
 class GrailsJasperGrailsPlugin extends Plugin {
 
@@ -9,9 +11,9 @@ class GrailsJasperGrailsPlugin extends Plugin {
 
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
-        "grails-app/views/error.gsp",
-        'docs/**',
-        'src/docs/**'
+            "grails-app/views/error.gsp",
+            'docs/**',
+            'src/docs/**'
     ]
 
     // TODO Fill in these fields
@@ -38,29 +40,14 @@ class GrailsJasperGrailsPlugin extends Plugin {
     // Online location of the plugin's browseable source code.
     def scm = [url: "https://github.com/candrews/grails-jasper"]
 
-    def doWithWebDescriptor = { xml ->
-        def servlets = xml.servlet
-        def lastServlet = servlets[servlets.size() - 1]
-        lastServlet + {
-            servlet {
-                'servlet-name'('image')
-                'servlet-class'('net.sf.jasperreports.j2ee.servlets.ImageServlet')
+    Closure doWithSpring() {
+        { ->
+            imageServlet(ImageServlet)
+            dispatchServletRegistrationBean(ServletRegistrationBean) {
+                servlet = ref(imageServlet)
+                urlMappings = ["/reports/image"]
             }
         }
-
-        def mappings = xml.'servlet-mapping'
-        def lastMapping = mappings[mappings.size() - 1]
-        lastMapping + {
-            'servlet-mapping' {
-                'servlet-name'('image')
-                'url-pattern'('/reports/image')
-            }
-        }
-    }
-
-    Closure doWithSpring() { {->
-            // TODO Implement runtime spring config (optional)
-        } 
     }
 
     void doWithDynamicMethods() {
