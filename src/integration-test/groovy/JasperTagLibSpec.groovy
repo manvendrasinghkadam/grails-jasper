@@ -60,7 +60,7 @@ class JasperTagLibSpec extends JasperPluginSpec {
             def template = '<g:jasperReport format="pdf" jasper="myreport"/>'
         expect:
             assertOutputEquals squeezeWhitespace("""| <a class="jasperButton" title="PDF" href="/myapp/jasper?_format=PDF&_name=&_file=myreport">
-        <img border="0" alt="PDF" src="/myapp/images/icons/PDF.gif" /></a> |"""), template, [:], transformSqueezeWhitespace
+        <img border="0" alt="PDF" src="/assets/icons/PDF.gif" /></a> |"""), template, [:], transformSqueezeWhitespace
     }
 
     /**
@@ -71,7 +71,7 @@ class JasperTagLibSpec extends JasperPluginSpec {
             def template = '<g:jasperReport format="pdf" jasper="myreport" name="The Report" delimiter=" "/>'
         expect:
             assertOutputEquals squeezeWhitespace("""<a class="jasperButton" title="PDF" href="/myapp/jasper?_format=PDF&_name=The+Report&_file=myreport">
-        <img border="0" alt="PDF" src="/myapp/images/icons/PDF.gif" /></a>  <strong>The Report</strong>"""), template, [:], transformSqueezeWhitespace
+        <img border="0" alt="PDF" src="/assets/icons/PDF.gif" /></a>  <strong>The Report</strong>"""), template, [:], transformSqueezeWhitespace
     }
 
     /**
@@ -82,8 +82,8 @@ class JasperTagLibSpec extends JasperPluginSpec {
             def template = '<g:jasperReport format="pdf, rtf" jasper="myreport" name="The Report" delimiter=" "/>'
         expect:
             assertOutputEquals squeezeWhitespace("""<a class="jasperButton" title="PDF" href="/myapp/jasper?_format=PDF&_name=The+Report&_file=myreport">
-        <img border="0" alt="PDF" src="/myapp/images/icons/PDF.gif" /></a>  <a class="jasperButton" title="RTF" href="/myapp/jasper?_format=RTF&_name=The+Report&_file=myreport">
-        <img border="0" alt="RTF" src="/myapp/images/icons/RTF.gif" /></a>  <strong>The Report</strong>"""), template, [:], transformSqueezeWhitespace
+        <img border="0" alt="PDF" src="/assets/icons/PDF.gif" /></a>  <a class="jasperButton" title="RTF" href="/myapp/jasper?_format=RTF&_name=The+Report&_file=myreport">
+        <img border="0" alt="RTF" src="/assets/icons/RTF.gif" /></a>  <strong>The Report</strong>"""), template, [:], transformSqueezeWhitespace
     }
 
     /**
@@ -95,7 +95,7 @@ class JasperTagLibSpec extends JasperPluginSpec {
         expect:
             assertOutputEquals squeezeWhitespace("""|
         <a class="jasperButton" title="PDF" href="/myapp/jasper?_format=PDF&_name=Print+as+PDF&_file=myreport">
-        <img border="0" alt="PDF" src="/myapp/images/icons/PDF.gif" /></a> | <strong>Print as PDF</strong>"""), template, [:], transformSqueezeWhitespace
+        <img border="0" alt="PDF" src="/assets/icons/PDF.gif" /></a> | <strong>Print as PDF</strong>"""), template, [:], transformSqueezeWhitespace
     }
 
     /**
@@ -107,7 +107,7 @@ class JasperTagLibSpec extends JasperPluginSpec {
         expect:
             assertOutputEquals squeezeWhitespace("""|
         <a class="jasperButton" title="PDF" href="/myapp/jasper?_format=PDF&_name=&_file=myreport">
-        <img border="0" alt="PDF" src="/myapp/images/icons/PDF.gif" /></a> | Print as PDF"""), template, [:], transformSqueezeWhitespace
+        <img border="0" alt="PDF" src="/assets/icons/PDF.gif" /></a> | Print as PDF"""), template, [:], transformSqueezeWhitespace
     }
 
     /**
@@ -123,15 +123,12 @@ class JasperTagLibSpec extends JasperPluginSpec {
           <input type="hidden" name="_name" value="" />
           <input type="hidden" name="_file" value="myreport" />
         | <a href="#" class="jasperButton" title="PDF" onclick="return submit_myreport(this)">
-        <img border="0" alt="PDF" src="/myapp/images/icons/PDF.gif" /></a> |&nbsp;A Body</form>
+        <img border="0" alt="PDF" src="/assets/icons/PDF.gif" /></a> |&nbsp;A Body</form>
         """), template, [:], transformSqueezeWhitespace
     }
 
     // TODO passing through ID and CLASS attributes
     def setup() {
-
         WebUtils.retrieveGrailsWebRequest().setAttribute(WebUtils.INCLUDE_CONTEXT_PATH_ATTRIBUTE, "/myapp", RequestAttributes.SCOPE_REQUEST)
-
-//        RequestContextHolder.currentRequestAttributes().currentRequest."${WebUtils.INCLUDE_CONTEXT_PATH_ATTRIBUTE}" = '/myapp'
     }
 }
