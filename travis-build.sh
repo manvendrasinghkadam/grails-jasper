@@ -4,6 +4,9 @@ set -e
 #./grailsw test-app --non-interactive
 #./grailsw package-plugin --non-interactive
 #./grailsw doc --pdf --non-interactive
+
+./gradlew clean build groovydoc assemble
+
 #if [[ $TRAVIS_BRANCH == 'master' && $TRAVIS_REPO_SLUG == 'candrews/grails-jasper' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
   git config --global user.name "$GIT_NAME"
   git config --global user.email "$GIT_EMAIL"
