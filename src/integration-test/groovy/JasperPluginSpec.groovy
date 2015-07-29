@@ -55,12 +55,6 @@ class JasperPluginSpec extends Specification {
             '\t \t X-RAY YANKEE\t\t ZULU' == squeezeWhitespace("  \t\n  \n\t   X-RAY\n \n\n\n YANKEE\t\t   \nZULU\n")
     }
 
-    void "test something"() {
-        expect: "fix me"
-            true == true
-    }
-
-
     def setup() {
     }
 
